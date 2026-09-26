@@ -35,3 +35,33 @@ Initial project environment is ready.
 - Create Django project
 - Create analyzer application
 - Verify Django backend
+
+## Day 2 — Django Backend Setup
+
+### Completed
+
+- Created the Django project
+- Created the `analyzer` application
+- Added Django REST Framework
+- Registered the `analyzer` application
+- Verified Django configuration
+- Successfully started the Django development server
+
+### Backend Structure
+
+```text
+backend/
+├── manage.py
+├── config/
+│   ├── settings.py
+│   ├── urls.py
+│   ├── asgi.py
+│   └── wsgi.py
+│
+└── analyzer/
+    ├── migrations/
+    ├── admin.py
+    ├── apps.py
+    ├── models.py
+    ├── tests.py
+    └── views.py
