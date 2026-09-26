@@ -65,3 +65,38 @@ backend/
     ├── models.py
     ├── tests.py
     └── views.py
+
+## Day 3 — Git Repository Analyzer
+
+### Completed
+
+- Integrated GitPython with the Django project
+- Created the Git repository analyzer
+- Extracted commit information
+- Extracted commit author and email
+- Extracted commit dates and messages
+- Extracted files changed per commit
+- Extracted additions and deletions
+- Added contributor commit statistics
+- Tested the analyzer using the project repository
+
+### Current Analyzer Output
+
+The analyzer currently provides:
+
+- Commit details
+- Contributor statistics
+- Files changed
+- Lines added
+- Lines deleted
+- Commit date and message
+
+### Current Status
+
+Git repository analysis is working successfully.
+
+### Next
+
+- Add weekday and time-based commit analysis
+- Create the Django REST API
+- Return repository analysis as JSON
