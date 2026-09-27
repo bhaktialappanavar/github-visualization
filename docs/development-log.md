@@ -77,26 +77,32 @@ backend/
 - Extracted commit dates and messages
 - Extracted files changed per commit
 - Extracted additions and deletions
-- Added contributor commit statistics
-- Tested the analyzer using the project repository
+- Added contributor statistics
+- Added weekday commit activity
+- Added hourly commit activity
+- Added repository summary statistics
+- Tested the analyzer successfully using the project repository
 
-### Current Analyzer Output
+### Analyzer Output
 
 The analyzer currently provides:
 
+- Total commits
+- Total contributors
+- Total additions
+- Total deletions
+- Total files changed
 - Commit details
-- Contributor statistics
-- Files changed
-- Lines added
-- Lines deleted
-- Commit date and message
+- Contributor commit counts
+- Weekday activity
+- Hourly activity
 
 ### Current Status
 
-Git repository analysis is working successfully.
+The Git repository analysis engine is working successfully.
 
 ### Next
 
-- Add weekday and time-based commit analysis
-- Create the Django REST API
+- Create Django REST API endpoints
 - Return repository analysis as JSON
+- Connect the analyzer to the frontend
