@@ -4,13 +4,14 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>GitHub Visualization</title>
 
-    
+    <!-- CSS -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/layout.css' %}">
     <link rel="stylesheet" href="{% static 'css/components.css' %}">
@@ -18,38 +19,69 @@
 
     <!-- D3.js -->
     <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+
 </head>
+
 
 <body>
 
-    <!-- Background -->
+    <!-- ========================================
+         Background
+    ========================================= -->
+
     <div class="background">
+
         <div class="orb orb-one"></div>
+
         <div class="orb orb-two"></div>
+
         <div class="orb orb-three"></div>
+
     </div>
 
 
-    <!-- Main Container -->
+    <!-- ========================================
+         Main Container
+    ========================================= -->
+
     <main class="container">
 
-        <!-- Header -->
+
+        <!-- ========================================
+             Header
+        ========================================= -->
+
         <header class="header">
 
             <div class="logo">
-                <div class="logo-icon">GH</div>
+
+                <div class="logo-icon">
+                    GH
+                </div>
 
                 <div>
-                    <h1>GitHub Visualization</h1>
-                    <p>Interactive Repository Analytics</p>
+
+                    <h1>
+                        GitHub Visualization
+                    </h1>
+
+                    <p>
+                        Interactive Repository Analytics
+                    </p>
+
                 </div>
+
             </div>
 
         </header>
 
 
-        <!-- Hero -->
+        <!-- ========================================
+             Hero Section
+        ========================================= -->
+
         <section class="hero">
+
 
             <div class="hero-content">
 
@@ -57,25 +89,36 @@
                     Git Analytics Platform
                 </span>
 
+
                 <h2>
+
                     Understand your
-                    <span>GitHub repository</span>
+
+                    <span>
+                        GitHub repository
+                    </span>
+
                 </h2>
 
+
                 <p>
+
                     Analyze commits, contributors, changes and development
                     activity through interactive visualizations.
+
                 </p>
 
             </div>
 
 
             <!-- Repository Input -->
+
             <div class="repository-card tilt-card">
 
                 <label for="repo-url">
                     GitHub Repository URL
                 </label>
+
 
                 <div class="input-group">
 
@@ -85,17 +128,36 @@
                         placeholder="https://github.com/username/repository"
                     >
 
+
                     <button id="analyze-btn">
-                        <span id="button-text">Analyze</span>
+
+                        <span id="button-text">
+                            Analyze
+                        </span>
+
                     </button>
 
                 </div>
 
+
+                <!-- Status Message -->
+
                 <p id="status-message"></p>
 
-                <div id="loading" class="loading hidden">
+
+                <!-- Loading -->
+
+                <div
+                    id="loading"
+                    class="loading hidden"
+                >
+
                     <div class="loader"></div>
-                    <p>Analyzing repository...</p>
+
+                    <p>
+                        Analyzing repository...
+                    </p>
+
                 </div>
 
             </div>
@@ -103,52 +165,135 @@
         </section>
 
 
-        <!-- Statistics -->
+        <!-- ========================================
+             Repository Information
+        ========================================= -->
+
+        <section
+            id="repository-info"
+            class="repository-info hidden"
+        >
+
+            <div class="repository-info-content">
+
+                <span class="repository-label">
+                    Repository
+                </span>
+
+
+                <h3 id="repository-name">
+                    -
+                </h3>
+
+
+                <a
+                    id="repository-url"
+                    href="#"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    -
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- ========================================
+             Statistics
+        ========================================= -->
+
         <section class="stats-section">
 
+
+            <!-- Total Commits -->
+
             <div class="stat-card tilt-card">
 
-                <div class="stat-icon">◉</div>
+                <div class="stat-icon">
+                    ◉
+                </div>
 
                 <div>
-                    <p>Total Commits</p>
-                    <h3 id="total-commits">0</h3>
+
+                    <p>
+                        Total Commits
+                    </p>
+
+                    <h3 id="total-commits">
+                        0
+                    </h3>
+
                 </div>
 
             </div>
 
 
+            <!-- Contributors -->
+
             <div class="stat-card tilt-card">
 
-                <div class="stat-icon">◎</div>
+                <div class="stat-icon">
+                    ◎
+                </div>
 
                 <div>
-                    <p>Contributors</p>
-                    <h3 id="total-contributors">0</h3>
+
+                    <p>
+                        Contributors
+                    </p>
+
+                    <h3 id="total-contributors">
+                        0
+                    </h3>
+
                 </div>
 
             </div>
 
 
+            <!-- Additions -->
+
             <div class="stat-card tilt-card">
 
-                <div class="stat-icon">＋</div>
+                <div class="stat-icon">
+                    ＋
+                </div>
 
                 <div>
-                    <p>Additions</p>
-                    <h3 id="total-additions">0</h3>
+
+                    <p>
+                        Additions
+                    </p>
+
+                    <h3 id="total-additions">
+                        0
+                    </h3>
+
                 </div>
 
             </div>
 
 
+            <!-- Deletions -->
+
             <div class="stat-card tilt-card">
 
-                <div class="stat-icon">−</div>
+                <div class="stat-icon">
+                    −
+                </div>
 
                 <div>
-                    <p>Deletions</p>
-                    <h3 id="total-deletions">0</h3>
+
+                    <p>
+                        Deletions
+                    </p>
+
+                    <h3 id="total-deletions">
+                        0
+                    </h3>
+
                 </div>
 
             </div>
@@ -156,36 +301,75 @@
         </section>
 
 
-        <!-- Charts -->
+        <!-- ========================================
+             Charts
+        ========================================= -->
+
         <section class="charts-section">
 
+
+            <!-- Commit Activity -->
+
             <div class="chart-card">
-                <h3>Commit Activity</h3>
+
+                <h3>
+                    Commit Activity
+                </h3>
+
                 <div id="commit-chart"></div>
+
             </div>
 
 
+            <!-- Contributors -->
+
             <div class="chart-card">
-                <h3>Contributors</h3>
+
+                <h3>
+                    Contributors
+                </h3>
+
                 <div id="contributor-chart"></div>
+
             </div>
 
 
+            <!-- Additions vs Deletions -->
+
             <div class="chart-card">
-                <h3>Additions vs Deletions</h3>
+
+                <h3>
+                    Additions vs Deletions
+                </h3>
+
                 <div id="changes-chart"></div>
+
             </div>
 
 
+            <!-- Weekday Activity -->
+
             <div class="chart-card">
-                <h3>Weekday Activity</h3>
+
+                <h3>
+                    Weekday Activity
+                </h3>
+
                 <div id="weekday-chart"></div>
+
             </div>
 
 
+            <!-- Hourly Activity -->
+
             <div class="chart-card">
-                <h3>Hourly Activity</h3>
+
+                <h3>
+                    Hourly Activity
+                </h3>
+
                 <div id="hourly-chart"></div>
+
             </div>
 
         </section>
@@ -193,12 +377,22 @@
     </main>
 
 
+    <!-- ========================================
+         JavaScript
+    ========================================= -->
+
     <script src="{% static 'js/api.js' %}"></script>
+
     <script src="{% static 'js/ui.js' %}"></script>
+
     <script src="{% static 'js/effects.js' %}"></script>
+
     <script src="{% static 'js/tooltip.js' %}"></script>
+
     <script src="{% static 'js/charts.js' %}"></script>
+
     <script src="{% static 'js/main.js' %}"></script>
+
 
 </body>
 

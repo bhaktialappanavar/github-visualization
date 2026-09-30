@@ -51,31 +51,24 @@ function setLoading(isLoading) {
 
 
     if (analyzeButton) {
-
-        analyzeButton.disabled =
-            isLoading;
+        analyzeButton.disabled = isLoading;
     }
 
 
     if (buttonText) {
-
         buttonText.textContent =
-            isLoading
-                ? "Analyzing..."
-                : "Analyze";
+            isLoading ? "Analyzing..." : "Analyze";
     }
 
 
     if (loading) {
-
         loading.classList.toggle(
             "hidden",
             !isLoading
         );
     }
+
 }
-
-
 // ========================================
 // Set Status Message
 // ========================================
@@ -93,4 +86,43 @@ function setStatus(message) {
         statusMessage.textContent =
             message;
     }
+}
+
+function updateRepositoryInfo(repository) {
+
+    const repositoryInfo =
+        document.getElementById(
+            "repository-info"
+        );
+
+    const repositoryName =
+        document.getElementById(
+            "repository-name"
+        );
+
+    const repositoryUrl =
+        document.getElementById(
+            "repository-url"
+        );
+
+    if (
+        !repositoryInfo ||
+        !repositoryName ||
+        !repositoryUrl
+    ) {
+        return;
+    }
+
+    repositoryName.textContent =
+        repository.name;
+
+    repositoryUrl.textContent =
+        repository.url;
+
+    repositoryUrl.href =
+        repository.url;
+
+    repositoryInfo.classList.remove(
+        "hidden"
+    );
 }

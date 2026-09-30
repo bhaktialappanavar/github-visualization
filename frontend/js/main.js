@@ -1,33 +1,12 @@
-// ========================================
-// GitHub Visualization - Main
-// ========================================
-
-
-// ========================================
-// DOM Elements
-// ========================================
-
 const analyzeButton =
-    document.getElementById(
-        "analyze-btn"
-    );
-
+    document.getElementById("analyze-btn");
 
 const repoInput =
-    document.getElementById(
-        "repo-url"
-    );
-
+    document.getElementById("repo-url");
 
 const statusMessage =
-    document.getElementById(
-        "status-message"
-    );
+    document.getElementById("status-message");
 
-
-// ========================================
-// Analyze Button
-// ========================================
 
 if (analyzeButton) {
 
@@ -35,20 +14,15 @@ if (analyzeButton) {
         "click",
         analyzeRepositoryData
     );
+
 }
 
-
-// ========================================
-// Analyze Repository
-// ========================================
 
 async function analyzeRepositoryData() {
 
     const repoUrl =
         repoInput.value.trim();
 
-
-    // Validate URL
 
     if (!repoUrl) {
 
@@ -60,10 +34,8 @@ async function analyzeRepositoryData() {
     }
 
 
-    setStatus(
-        "Analyzing repository..."
-    );
-
+    // Clear status message while analyzing
+    setStatus("");
 
     setLoading(true);
 
@@ -71,9 +43,7 @@ async function analyzeRepositoryData() {
     try {
 
         const data =
-            await analyzeRepository(
-                repoUrl
-            );
+            await analyzeRepository(repoUrl);
 
 
         console.log(
@@ -82,14 +52,19 @@ async function analyzeRepositoryData() {
         );
 
 
-        // Update statistics
-
         updateStatistics(
             data.summary
         );
 
 
-        // Create charts
+        updateRepositoryInfo(
+            data.repository
+        );
+
+
+        // Clear the URL input
+        repoInput.value = "";
+
 
         createCommitChart(
             data.commits
@@ -116,6 +91,7 @@ async function analyzeRepositoryData() {
         );
 
 
+        // Show success message
         setStatus(
             "Repository analyzed successfully!"
         );
@@ -125,7 +101,6 @@ async function analyzeRepositoryData() {
 
         console.error(error);
 
-
         setStatus(
             "Error: " + error.message
         );
@@ -134,5 +109,7 @@ async function analyzeRepositoryData() {
     } finally {
 
         setLoading(false);
+
     }
+
 }

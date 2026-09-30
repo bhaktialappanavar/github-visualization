@@ -393,3 +393,67 @@
         padding: 18px;
     }
 }
+
+/* ========================================
+   Repository Information
+======================================== */
+
+.repository-info {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto 40px;
+    padding: 22px 28px;
+
+    border: 1px solid rgba(139, 92, 246, 0.25);
+    border-radius: 18px;
+
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.repository-info-content {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.repository-label {
+    color: #94a3b8;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.repository-info h3 {
+    margin: 0;
+    color: #ffffff;
+    font-size: 20px;
+}
+
+.repository-info a {
+    color: #a78bfa;
+    font-size: 14px;
+    text-decoration: none;
+    word-break: break-all;
+}
+
+.repository-info a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+
+    .repository-info {
+        padding: 18px;
+    }
+
+    .repository-info-content {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 8px;
+    }
+}
