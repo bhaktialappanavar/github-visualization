@@ -1,0 +1,205 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GitHub Visualization</title>
+
+    
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/layout.css' %}">
+    <link rel="stylesheet" href="{% static 'css/components.css' %}">
+    <link rel="stylesheet" href="{% static 'css/charts.css' %}">
+
+    <!-- D3.js -->
+    <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="orb orb-three"></div>
+    </div>
+
+
+    <!-- Main Container -->
+    <main class="container">
+
+        <!-- Header -->
+        <header class="header">
+
+            <div class="logo">
+                <div class="logo-icon">GH</div>
+
+                <div>
+                    <h1>GitHub Visualization</h1>
+                    <p>Interactive Repository Analytics</p>
+                </div>
+            </div>
+
+        </header>
+
+
+        <!-- Hero -->
+        <section class="hero">
+
+            <div class="hero-content">
+
+                <span class="badge">
+                    Git Analytics Platform
+                </span>
+
+                <h2>
+                    Understand your
+                    <span>GitHub repository</span>
+                </h2>
+
+                <p>
+                    Analyze commits, contributors, changes and development
+                    activity through interactive visualizations.
+                </p>
+
+            </div>
+
+
+            <!-- Repository Input -->
+            <div class="repository-card tilt-card">
+
+                <label for="repo-url">
+                    GitHub Repository URL
+                </label>
+
+                <div class="input-group">
+
+                    <input
+                        type="url"
+                        id="repo-url"
+                        placeholder="https://github.com/username/repository"
+                    >
+
+                    <button id="analyze-btn">
+                        <span id="button-text">Analyze</span>
+                    </button>
+
+                </div>
+
+                <p id="status-message"></p>
+
+                <div id="loading" class="loading hidden">
+                    <div class="loader"></div>
+                    <p>Analyzing repository...</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Statistics -->
+        <section class="stats-section">
+
+            <div class="stat-card tilt-card">
+
+                <div class="stat-icon">◉</div>
+
+                <div>
+                    <p>Total Commits</p>
+                    <h3 id="total-commits">0</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card tilt-card">
+
+                <div class="stat-icon">◎</div>
+
+                <div>
+                    <p>Contributors</p>
+                    <h3 id="total-contributors">0</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card tilt-card">
+
+                <div class="stat-icon">＋</div>
+
+                <div>
+                    <p>Additions</p>
+                    <h3 id="total-additions">0</h3>
+                </div>
+
+            </div>
+
+
+            <div class="stat-card tilt-card">
+
+                <div class="stat-icon">−</div>
+
+                <div>
+                    <p>Deletions</p>
+                    <h3 id="total-deletions">0</h3>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Charts -->
+        <section class="charts-section">
+
+            <div class="chart-card">
+                <h3>Commit Activity</h3>
+                <div id="commit-chart"></div>
+            </div>
+
+
+            <div class="chart-card">
+                <h3>Contributors</h3>
+                <div id="contributor-chart"></div>
+            </div>
+
+
+            <div class="chart-card">
+                <h3>Additions vs Deletions</h3>
+                <div id="changes-chart"></div>
+            </div>
+
+
+            <div class="chart-card">
+                <h3>Weekday Activity</h3>
+                <div id="weekday-chart"></div>
+            </div>
+
+
+            <div class="chart-card">
+                <h3>Hourly Activity</h3>
+                <div id="hourly-chart"></div>
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="{% static 'js/api.js' %}"></script>
+    <script src="{% static 'js/ui.js' %}"></script>
+    <script src="{% static 'js/effects.js' %}"></script>
+    <script src="{% static 'js/tooltip.js' %}"></script>
+    <script src="{% static 'js/charts.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

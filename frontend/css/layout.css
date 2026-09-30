@@ -1,0 +1,252 @@
+/* ========================================
+   GitHub Visualization - Layout
+======================================== */
+
+
+/* ========================================
+   Main Container
+======================================== */
+
+.container {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 30px 25px 60px;
+}
+
+
+/* ========================================
+   Background
+======================================== */
+
+.background {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.orb {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: 0.25;
+}
+
+.orb-one {
+    width: 400px;
+    height: 400px;
+    top: -150px;
+    left: -100px;
+}
+
+.orb-two {
+    width: 350px;
+    height: 350px;
+    top: 25%;
+    right: -100px;
+}
+
+.orb-three {
+    width: 300px;
+    height: 300px;
+    bottom: -100px;
+    left: 40%;
+}
+
+
+/* ========================================
+   Header
+======================================== */
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+
+    margin-bottom: 60px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.logo-icon {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.logo h1 {
+    font-size: 2rem;
+    line-height: 1.1;
+    margin-bottom: 5px;
+}
+
+.logo p {
+    color: #94a3b8;
+    font-size: 14px;
+}
+
+
+/* ========================================
+   Hero Section
+======================================== */
+
+.hero {
+    width: 100%;
+    max-width: 1100px;
+
+    margin: 0 auto 70px;
+
+    text-align: center;
+}
+
+.hero-content {
+    margin-bottom: 40px;
+}
+
+.badge {
+    display: inline-block;
+    margin-bottom: 12px;
+
+    color: #cbd5e1;
+
+    font-size: 15px;
+}
+
+.hero h2 {
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.15;
+
+    margin-bottom: 15px;
+}
+
+.hero h2 span {
+    color: #a5b4fc;
+}
+
+.hero p {
+    max-width: 800px;
+
+    margin: 0 auto;
+
+    color: #a5b4fc;
+
+    font-size: 1.05rem;
+    line-height: 1.7;
+}
+
+
+/* ========================================
+   Repository Section
+======================================== */
+
+.repository-section {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 60px;
+}
+
+
+/* ========================================
+   Statistics Section
+======================================== */
+
+.stats-section {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 20px;
+
+    margin-bottom: 40px;
+}
+
+
+/* ========================================
+   Charts Section
+======================================== */
+
+.charts-section {
+    width: 100%;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 24px;
+
+    padding-bottom: 70px;
+}
+
+
+/* ========================================
+   Responsive - Tablet
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .stats-section {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .charts-section {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ========================================
+   Responsive - Mobile
+======================================== */
+
+@media (max-width: 600px) {
+
+    .container {
+        padding:
+            20px
+            15px
+            40px;
+    }
+
+    .header {
+        margin-bottom: 40px;
+    }
+
+    .logo h1 {
+        font-size: 1.5rem;
+    }
+
+    .hero {
+        margin-bottom: 45px;
+    }
+
+    .stats-section {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+    }
+
+    .charts-section {
+        grid-template-columns: 1fr;
+
+        gap: 18px;
+    }
+
+    .repository-section {
+        margin-bottom: 45px;
+    }
+}

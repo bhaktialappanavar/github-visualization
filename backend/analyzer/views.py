@@ -1,12 +1,16 @@
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
+from django.shortcuts import render
 
 from .serializers import RepositorySerializer
 from .git_analyzer import analyze_repository
 from .repository_service import analyze_github_repository
 
 
+def dashboard(request):
+    return render(request, "index.html")
+    
 @api_view(["POST"])
 def analyze_repository_api(request):
     serializer = RepositorySerializer(data=request.data)

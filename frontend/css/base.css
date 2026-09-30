@@ -1,0 +1,101 @@
+/* ========================================
+   GitHub Visualization - Base Styles
+   ======================================== */
+
+
+/* ========================================
+   Reset
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* ========================================
+   Body
+   ======================================== */
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    background:
+        #050816;
+
+    color: #ffffff;
+
+    overflow-x: hidden;
+}
+
+
+/* ========================================
+   Links
+   ======================================== */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+
+/* ========================================
+   Buttons
+   ======================================== */
+
+button,
+input {
+    font-family: inherit;
+}
+
+
+/* ========================================
+   Images
+   ======================================== */
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+
+/* ========================================
+   Selection
+   ======================================== */
+
+::selection {
+    background: #8b5cf6;
+    color: #ffffff;
+}
+
+
+/* ========================================
+   Scrollbar
+   ======================================== */
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #050816;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #312e81;
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: #4c1d95;
+}

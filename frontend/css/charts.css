@@ -1,0 +1,273 @@
+/* ========================================
+   GitHub Visualization - Chart Styles
+   ======================================== */
+
+
+/* ========================================
+   D3 SVG
+   ======================================== */
+
+.chart-card svg {
+    display: block;
+
+    width: 100%;
+
+    overflow: visible;
+
+    pointer-events: all;
+}
+
+
+/* ========================================
+   D3 Axes
+   ======================================== */
+
+.chart-card svg .domain {
+    stroke:
+        rgba(
+            148,
+            163,
+            184,
+            0.25
+        );
+}
+
+
+.chart-card svg .tick line {
+    stroke:
+        rgba(
+            148,
+            163,
+            184,
+            0.15
+        );
+}
+
+
+.chart-card svg .tick text {
+    fill: #94a3b8;
+
+    font-size: 11px;
+}
+
+
+/* ========================================
+   Chart Elements
+   ======================================== */
+
+.chart-card svg rect,
+.chart-card svg circle {
+    pointer-events: all;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   Commit Points
+   ======================================== */
+
+.commit-point {
+    transition:
+        r 0.15s ease;
+}
+
+
+.commit-point:hover {
+    r: 7;
+}
+
+
+/* ========================================
+   Chart Bars
+   ======================================== */
+
+.contributor-bar,
+.changes-bar,
+.weekday-bar,
+.hourly-bar {
+    transition:
+        opacity 0.15s ease;
+}
+
+
+.contributor-bar:hover,
+.changes-bar:hover,
+.weekday-bar:hover,
+.hourly-bar:hover {
+    opacity: 0.75;
+}
+
+
+/* ========================================
+   Tooltip
+   ======================================== */
+
+#tooltip {
+    position: fixed !important;
+
+    display: block;
+
+    max-width: 250px;
+
+    padding:
+        10px
+        14px;
+
+    border:
+        1px solid
+        rgba(
+            139,
+            92,
+            246,
+            0.5
+        );
+
+    border-radius: 10px;
+
+    background:
+        rgba(
+            5,
+            8,
+            22,
+            0.96
+        );
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    white-space: nowrap;
+
+    pointer-events: none !important;
+
+    opacity: 0;
+
+    z-index: 999999;
+
+    box-shadow:
+        0 10px 35px
+        rgba(
+            0,
+            0,
+            0,
+            0.5
+        );
+
+    transition:
+        opacity 0.12s ease;
+}
+
+
+#tooltip strong {
+    color: #c4b5fd;
+}
+
+
+/* ========================================
+   Mobile Chart Adjustments
+   ======================================== */
+
+@media (max-width: 600px) {
+
+    .chart-card svg .tick text {
+        font-size: 9px;
+    }
+
+
+    #tooltip {
+        font-size: 12px;
+
+        padding:
+            8px
+            10px;
+    }
+}
+
+/* ========================================
+   Chart Tooltip
+======================================== */
+
+#tooltip {
+    position: fixed;
+    z-index: 999999;
+
+    max-width: 220px;
+    padding: 10px 14px;
+
+    border: 1px solid rgba(139, 92, 246, 0.35);
+    border-radius: 10px;
+
+    background: rgba(15, 23, 42, 0.95);
+    color: #ffffff;
+
+    font-size: 13px;
+    line-height: 1.5;
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.35);
+
+    backdrop-filter: blur(10px);
+
+    pointer-events: none;
+
+    opacity: 0;
+
+    transition:
+        opacity 0.15s ease;
+
+    white-space: nowrap;
+}
+
+#tooltip strong {
+    color: #c4b5fd;
+    font-weight: 600;
+}
+
+/* ========================================
+   Responsive Charts
+======================================== */
+
+.chart-card {
+    overflow: hidden;
+}
+
+.chart-card svg {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.chart-card .domain,
+.chart-card .tick line {
+    stroke: rgba(148, 163, 184, 0.2);
+}
+
+.chart-card .tick text {
+    fill: #94a3b8;
+    font-size: 11px;
+}
+
+@media (max-width: 600px) {
+
+    .chart-card {
+        padding: 15px;
+    }
+
+    .chart-card h3 {
+        font-size: 17px;
+        margin-bottom: 15px;
+    }
+
+    .chart-card .tick text {
+        font-size: 9px;
+    }
+
+    #tooltip {
+        max-width: 180px;
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+}
