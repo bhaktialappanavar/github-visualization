@@ -288,3 +288,140 @@ function updateContributorFilter(contributors) {
     );
 
 }
+
+// ========================================
+// Update Commit History
+// ========================================
+
+function updateCommitHistory(commits) {
+
+    const tableBody =
+        document.getElementById(
+            "commit-table-body"
+        );
+
+    const commitCount =
+        document.getElementById(
+            "commit-count"
+        );
+
+
+    if (!tableBody) {
+        return;
+    }
+
+
+    // Clear existing rows
+
+    tableBody.innerHTML = "";
+
+
+    // Update commit count
+
+    if (commitCount) {
+
+        commitCount.textContent =
+            `${commits.length} ${
+                commits.length === 1
+                    ? "commit"
+                    : "commits"
+            }`;
+
+    }
+
+
+    // Show message when there are no commits
+
+    if (commits.length === 0) {
+
+        const row =
+            document.createElement("tr");
+
+        row.innerHTML = `
+            <td colspan="5">
+                No commits found for the selected filters.
+            </td>
+        `;
+
+        tableBody.appendChild(row);
+
+        return;
+    }
+
+
+    // Add commit rows
+
+    commits.forEach((commit) => {
+
+        const row =
+            document.createElement("tr");
+
+
+        const shortHash =
+            commit.hash.substring(0, 7);
+
+
+        const commitDate =
+            new Date(
+                commit.date
+            ).toLocaleDateString(
+                "en-US",
+                {
+                    year: "numeric",
+                    month: "short",
+                    day: "numeric"
+                }
+            );
+
+
+        row.innerHTML = `
+
+            <td>
+                <span class="commit-hash">
+                    ${shortHash}
+                </span>
+            </td>
+
+            <td>
+                <span class="commit-author">
+                    ${commit.author}
+                </span>
+            </td>
+
+            <td>
+                <span class="commit-date">
+                    ${commitDate}
+                </span>
+            </td>
+
+            <td>
+                <span
+                    class="commit-message"
+                    title="${commit.message}"
+                >
+                    ${commit.message}
+                </span>
+            </td>
+
+            <td>
+                <span class="commit-changes">
+
+                    <span class="commit-additions">
+                        +${commit.additions || 0}
+                    </span>
+
+                    <span class="commit-deletions">
+                        -${commit.deletions || 0}
+                    </span>
+
+                </span>
+            </td>
+
+        `;
+
+
+        tableBody.appendChild(row);
+
+    });
+
+}

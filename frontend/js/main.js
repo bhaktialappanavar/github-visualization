@@ -64,6 +64,10 @@ async function analyzeRepositoryData() {
             data.contributors
         );
 
+        updateCommitHistory(
+            data.commits
+        );
+
 
         updateRepositoryInfo(
             data.repository
@@ -246,6 +250,10 @@ function applyFilters() {
 function updateFilteredDashboard(
     commits
 ) {
+
+    updateCommitHistory(
+        commits
+    );
 
     // ========================================
     // Update Statistics
