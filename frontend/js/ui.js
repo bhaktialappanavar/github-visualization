@@ -228,3 +228,63 @@ function updateRepositoryInfo(repository) {
     );
 
 }
+
+// ========================================
+// Update Contributor Filter
+// ========================================
+
+function updateContributorFilter(contributors) {
+
+    const contributorFilter =
+        document.getElementById(
+            "contributor-filter"
+        );
+
+
+    if (!contributorFilter) {
+        return;
+    }
+
+
+    // Clear existing contributors
+
+    contributorFilter.innerHTML = "";
+
+
+    // Add default option
+
+    const allOption =
+        document.createElement("option");
+
+    allOption.value = "all";
+
+    allOption.textContent =
+        "All Contributors";
+
+    contributorFilter.appendChild(
+        allOption
+    );
+
+
+    // Add contributors
+
+    Object.keys(contributors).forEach(
+        (contributor) => {
+
+            const option =
+                document.createElement("option");
+
+            option.value =
+                contributor;
+
+            option.textContent =
+                contributor;
+
+            contributorFilter.appendChild(
+                option
+            );
+
+        }
+    );
+
+}
