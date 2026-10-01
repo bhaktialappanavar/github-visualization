@@ -10,6 +10,10 @@ const statusMessage =
 let repositoryData = null;
 
 
+// ========================================
+// Analyze Button
+// ========================================
+
 if (analyzeButton) {
 
     analyzeButton.addEventListener(
@@ -19,6 +23,10 @@ if (analyzeButton) {
 
 }
 
+
+// ========================================
+// Analyze Repository
+// ========================================
 
 async function analyzeRepositoryData() {
 
@@ -56,27 +64,52 @@ async function analyzeRepositoryData() {
         );
 
 
-        updateStatistics(
-            data.summary
-        );
-
-        updateContributorFilter(
-            data.contributors
-        );
-
-        updateCommitHistory(
-            data.commits
-        );
-
+        // ========================================
+        // Update Repository Information
+        // ========================================
 
         updateRepositoryInfo(
             data.repository
         );
 
 
-        // Clear the URL input
+        // ========================================
+        // Update Statistics
+        // ========================================
+
+        updateStatistics(
+            data.summary
+        );
+
+
+        // ========================================
+        // Update Contributor Filter
+        // ========================================
+
+        updateContributorFilter(
+            data.contributors
+        );
+
+
+        // ========================================
+        // Update Commit History
+        // ========================================
+
+        updateCommitHistory(
+            data.commits
+        );
+
+
+        // ========================================
+        // Clear URL Input
+        // ========================================
+
         repoInput.value = "";
 
+
+        // ========================================
+        // Create Charts
+        // ========================================
 
         createCommitChart(
             data.commits
@@ -103,10 +136,26 @@ async function analyzeRepositoryData() {
         );
 
 
-        // Show success message
-        setStatus(
-            "Repository analyzed successfully!"
-        );
+        // ========================================
+        // Analysis Status
+        // ========================================
+
+        if (
+            data.analysis &&
+            data.analysis.limited
+        ) {
+
+            setStatus(
+                `Repository analyzed. Showing the latest ${data.analysis.commits_analyzed.toLocaleString()} commits.`
+            );
+
+        } else {
+
+            setStatus(
+                "Repository analyzed successfully!"
+            );
+
+        }
 
 
     } catch (error) {
@@ -125,6 +174,7 @@ async function analyzeRepositoryData() {
     }
 
 }
+
 
 // ========================================
 // Contributor Filter
@@ -150,6 +200,7 @@ if (contributorFilter) {
 
 }
 
+
 if (dateFilter) {
 
     dateFilter.addEventListener(
@@ -158,6 +209,7 @@ if (dateFilter) {
     );
 
 }
+
 
 // ========================================
 // Apply Filters
@@ -243,6 +295,7 @@ function applyFilters() {
 
 }
 
+
 // ========================================
 // Update Filtered Dashboard
 // ========================================
@@ -251,16 +304,22 @@ function updateFilteredDashboard(
     commits
 ) {
 
+    // ========================================
+    // Update Commit History
+    // ========================================
+
     updateCommitHistory(
         commits
     );
+
 
     // ========================================
     // Update Statistics
     // ========================================
 
     const totalCommits =
-    commits.length;
+        commits.length;
+
 
     const totalContributors =
         new Set(
@@ -272,6 +331,7 @@ function updateFilteredDashboard(
 
     let totalAdditions = 0;
     let totalDeletions = 0;
+
 
     commits.forEach(
         (commit) => {
@@ -287,17 +347,34 @@ function updateFilteredDashboard(
 
 
     updateStatistics({
-        total_commits: totalCommits,total_contributors: totalContributors,total_additions: totalAdditions,total_deletions: totalDeletions
+
+        total_commits:
+            totalCommits,
+
+        total_contributors:
+            totalContributors,
+
+        total_additions:
+            totalAdditions,
+
+        total_deletions:
+            totalDeletions
+
     });
 
-    // Update commit chart
+
+    // ========================================
+    // Update Commit Chart
+    // ========================================
 
     createCommitChart(
         commits
     );
 
 
-    // Calculate contributor counts
+    // ========================================
+    // Calculate Contributor Counts
+    // ========================================
 
     const contributors = {};
 
@@ -315,6 +392,7 @@ function updateFilteredDashboard(
 
             }
 
+
             contributors[
                 commit.author
             ]++;
@@ -323,12 +401,18 @@ function updateFilteredDashboard(
     );
 
 
+    // ========================================
+    // Update Contributor Chart
+    // ========================================
+
     createContributorChart(
         contributors
     );
 
 
-    // Calculate changes
+    // ========================================
+    // Calculate Changes
+    // ========================================
 
     let additions = 0;
     let deletions = 0;
@@ -347,13 +431,24 @@ function updateFilteredDashboard(
     );
 
 
+    // ========================================
+    // Update Changes Chart
+    // ========================================
+
     createChangesChart({
-        total_additions: additions,
-        total_deletions: deletions
+
+        total_additions:
+            additions,
+
+        total_deletions:
+            deletions
+
     });
 
 
-    // Calculate weekday activity
+    // ========================================
+    // Calculate Weekday Activity
+    // ========================================
 
     const weekdayActivity = {};
 
@@ -363,6 +458,7 @@ function updateFilteredDashboard(
 
             const date =
                 new Date(commit.date);
+
 
             const weekday =
                 date.toLocaleDateString(
@@ -388,12 +484,18 @@ function updateFilteredDashboard(
     );
 
 
+    // ========================================
+    // Update Weekday Chart
+    // ========================================
+
     createWeekdayChart(
         weekdayActivity
     );
 
 
-    // Calculate hourly activity
+    // ========================================
+    // Calculate Hourly Activity
+    // ========================================
 
     const hourlyActivity = {};
 
@@ -402,7 +504,9 @@ function updateFilteredDashboard(
         (commit) => {
 
             const hour =
-                new Date(commit.date).getHours();
+                new Date(
+                    commit.date
+                ).getHours();
 
 
             if (
@@ -420,6 +524,10 @@ function updateFilteredDashboard(
         }
     );
 
+
+    // ========================================
+    // Update Hourly Chart
+    // ========================================
 
     createHourlyChart(
         hourlyActivity
