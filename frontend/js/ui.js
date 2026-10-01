@@ -31,6 +31,7 @@ function updateStatistics(summary) {
         "total-deletions"
     ).textContent =
         summary.total_deletions.toLocaleString();
+
 }
 
 
@@ -51,24 +52,35 @@ function setLoading(isLoading) {
 
 
     if (analyzeButton) {
-        analyzeButton.disabled = isLoading;
+
+        analyzeButton.disabled =
+            isLoading;
+
     }
 
 
     if (buttonText) {
+
         buttonText.textContent =
-            isLoading ? "Analyzing..." : "Analyze";
+            isLoading
+                ? "Analyzing..."
+                : "Analyze";
+
     }
 
 
     if (loading) {
+
         loading.classList.toggle(
             "hidden",
             !isLoading
         );
+
     }
 
 }
+
+
 // ========================================
 // Set Status Message
 // ========================================
@@ -85,8 +97,15 @@ function setStatus(message) {
 
         statusMessage.textContent =
             message;
+
     }
+
 }
+
+
+// ========================================
+// Update Repository Information
+// ========================================
 
 function updateRepositoryInfo(repository) {
 
@@ -95,15 +114,42 @@ function updateRepositoryInfo(repository) {
             "repository-info"
         );
 
+
     const repositoryName =
         document.getElementById(
             "repository-name"
         );
 
+
     const repositoryUrl =
         document.getElementById(
             "repository-url"
         );
+
+
+    const repositoryDescription =
+        document.getElementById(
+            "repository-description"
+        );
+
+
+    const repositoryLanguage =
+        document.getElementById(
+            "repository-language"
+        );
+
+
+    const repositoryStars =
+        document.getElementById(
+            "repository-stars"
+        );
+
+
+    const repositoryForks =
+        document.getElementById(
+            "repository-forks"
+        );
+
 
     if (
         !repositoryInfo ||
@@ -113,8 +159,14 @@ function updateRepositoryInfo(repository) {
         return;
     }
 
+
+    // Repository name
+
     repositoryName.textContent =
         repository.name;
+
+
+    // Repository URL
 
     repositoryUrl.textContent =
         repository.url;
@@ -122,7 +174,57 @@ function updateRepositoryInfo(repository) {
     repositoryUrl.href =
         repository.url;
 
+
+    // Repository description
+
+    if (repositoryDescription) {
+
+        repositoryDescription.textContent =
+            repository.description ||
+            "No description";
+
+    }
+
+
+    // Programming language
+
+    if (repositoryLanguage) {
+
+        repositoryLanguage.textContent =
+            repository.language ||
+            "Unknown";
+
+    }
+
+
+    // Stars
+
+    if (repositoryStars) {
+
+        repositoryStars.textContent =
+            Number(
+                repository.stars || 0
+            ).toLocaleString();
+
+    }
+
+
+    // Forks
+
+    if (repositoryForks) {
+
+        repositoryForks.textContent =
+            Number(
+                repository.forks || 0
+            ).toLocaleString();
+
+    }
+
+
+    // Show repository information
+
     repositoryInfo.classList.remove(
         "hidden"
     );
+
 }

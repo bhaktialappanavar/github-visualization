@@ -416,9 +416,9 @@
 
 .repository-info-content {
     display: flex;
-    align-items: center;
-    gap: 18px;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
 }
 
 .repository-label {
@@ -456,4 +456,76 @@
         flex-direction: column;
         gap: 8px;
     }
+}
+
+/* ========================================
+   Repository Metadata
+======================================== */
+
+.repository-description {
+    width: 100%;
+    margin: 4px 0 0;
+
+    color: #94a3b8;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+.repository-meta {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 40px;
+
+    margin-top: 10px;
+    padding-top: 18px;
+
+    border-top: 1px solid
+        rgba(148, 163, 184, 0.12);
+}
+
+
+.repository-meta-item {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+}
+
+
+.repository-meta-item span {
+    color: #64748b;
+
+    font-size: 12px;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.08em;
+}
+
+
+.repository-meta-item strong {
+    color: #ffffff;
+
+    font-size: 16px;
+
+    font-weight: 600;
+}
+
+
+@media (max-width: 600px) {
+
+    .repository-meta {
+
+        align-items: flex-start;
+
+        gap: 25px;
+
+        flex-wrap: wrap;
+
+    }
+
 }

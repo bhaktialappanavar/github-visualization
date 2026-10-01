@@ -2,6 +2,7 @@ import os
 import shutil
 import tempfile
 
+import requests
 from git import Repo
 
 from .git_analyzer import analyze_repository
@@ -32,9 +33,43 @@ def analyze_github_repository(repo_url):
 
         remote_url = repo_url.rstrip("/")
 
+        parts = remote_url.split("/")
+
+        owner = parts[-2]
+        repo_name = parts[-1]
+
+        github_api_url = (
+            f"https://api.github.com/repos/{owner}/{repo_name}"
+        )
+
+        response = requests.get(
+            github_api_url,
+            timeout=10
+        )
+
+        response.raise_for_status()
+
+        github_data = response.json()
+
         repository = {
             "name": repo_name,
-            "url": remote_url
+            "url": remote_url,
+            "description": (
+                github_data.get("description")
+                or "No description"
+            ),
+            "language": (
+                github_data.get("language")
+                or "Unknown"
+            ),
+            "stars": github_data.get(
+                "stargazers_count",
+                0
+            ),
+            "forks": github_data.get(
+                "forks_count",
+                0
+            )
         }
 
         result["repository"] = repository
